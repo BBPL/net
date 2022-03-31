@@ -1,0 +1,5 @@
+C:\Users\mrkis\source\repos\WeatherShape\Shape.Weather.Common\obj\Debug\net6.0\Shape.Weather.Common.csproj.AssemblyReference.cache
+C:\Users\mrkis\source\repos\WeatherShape\Shape.Weather.Common\obj\Debug\net6.0\Shape.Weather.Common.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\mrkis\source\repos\WeatherShape\Shape.Weather.Common\obj\Debug\net6.0\Shape.Weather.Common.AssemblyInfoInputs.cache
+C:\Users\mrkis\source\repos\WeatherShape\Shape.Weather.Common\obj\Debug\net6.0\Shape.Weather.Common.AssemblyInfo.cs
+C:\Users\mrkis\source\repos\WeatherShape\Shape.Weather.Common\obj\Debug\net6.0\Shape.Weather.Common.csproj.CoreCompileInputs.cache
