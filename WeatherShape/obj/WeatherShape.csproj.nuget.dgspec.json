@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\mrkis\\source\\repos\\WeatherShape\\WeatherShape\\WeatherShape.csproj": {}
+    "C:\\Users\\mrkis\\source\\repos\\net\\WeatherShape\\WeatherShape.csproj": {}
   },
   "projects": {
-    "C:\\Users\\mrkis\\source\\repos\\WeatherShape\\Shape.Weather.Common\\Shape.Weather.Common.csproj": {
+    "C:\\Users\\mrkis\\source\\repos\\net\\Shape.Weather.Common\\Shape.Weather.Common.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\mrkis\\source\\repos\\WeatherShape\\Shape.Weather.Common\\Shape.Weather.Common.csproj",
+        "projectUniqueName": "C:\\Users\\mrkis\\source\\repos\\net\\Shape.Weather.Common\\Shape.Weather.Common.csproj",
         "projectName": "Shape.Weather.Common",
-        "projectPath": "C:\\Users\\mrkis\\source\\repos\\WeatherShape\\Shape.Weather.Common\\Shape.Weather.Common.csproj",
+        "projectPath": "C:\\Users\\mrkis\\source\\repos\\net\\Shape.Weather.Common\\Shape.Weather.Common.csproj",
         "packagesPath": "C:\\Users\\mrkis\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\mrkis\\source\\repos\\WeatherShape\\Shape.Weather.Common\\obj\\",
+        "outputPath": "C:\\Users\\mrkis\\source\\repos\\net\\Shape.Weather.Common\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\mrkis\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -22,7 +22,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {}
+          "https://www.nuget.org/api/v2": {}
         },
         "frameworks": {
           "net6.0": {
@@ -40,6 +40,10 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "Microsoft.AspNetCore.Mvc.Core": {
+              "target": "Package",
+              "version": "[2.2.5, )"
+            },
             "Microsoft.Extensions.Caching.Abstractions": {
               "target": "Package",
               "version": "[6.0.0, )"
@@ -47,26 +51,6 @@
             "Microsoft.Extensions.Caching.Memory": {
               "target": "Package",
               "version": "[6.0.1, )"
-            },
-            "Microsoft.Extensions.Configuration": {
-              "target": "Package",
-              "version": "[6.0.1, )"
-            },
-            "Microsoft.Extensions.Configuration.Abstractions": {
-              "target": "Package",
-              "version": "[6.0.0, )"
-            },
-            "Microsoft.Extensions.Configuration.Binder": {
-              "target": "Package",
-              "version": "[6.0.0, )"
-            },
-            "Microsoft.Extensions.DependencyInjection": {
-              "target": "Package",
-              "version": "[6.0.0, )"
-            },
-            "Microsoft.Extensions.DependencyInjection.Abstractions": {
-              "target": "Package",
-              "version": "[6.0.0, )"
             },
             "Microsoft.Extensions.Options": {
               "target": "Package",
@@ -96,14 +80,14 @@
         }
       }
     },
-    "C:\\Users\\mrkis\\source\\repos\\WeatherShape\\WeatherShape\\WeatherShape.csproj": {
+    "C:\\Users\\mrkis\\source\\repos\\net\\WeatherShape\\WeatherShape.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\mrkis\\source\\repos\\WeatherShape\\WeatherShape\\WeatherShape.csproj",
+        "projectUniqueName": "C:\\Users\\mrkis\\source\\repos\\net\\WeatherShape\\WeatherShape.csproj",
         "projectName": "WeatherShape",
-        "projectPath": "C:\\Users\\mrkis\\source\\repos\\WeatherShape\\WeatherShape\\WeatherShape.csproj",
+        "projectPath": "C:\\Users\\mrkis\\source\\repos\\net\\WeatherShape\\WeatherShape.csproj",
         "packagesPath": "C:\\Users\\mrkis\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\mrkis\\source\\repos\\WeatherShape\\WeatherShape\\obj\\",
+        "outputPath": "C:\\Users\\mrkis\\source\\repos\\net\\WeatherShape\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\mrkis\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -114,14 +98,14 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {}
+          "https://www.nuget.org/api/v2": {}
         },
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\mrkis\\source\\repos\\WeatherShape\\Shape.Weather.Common\\Shape.Weather.Common.csproj": {
-                "projectPath": "C:\\Users\\mrkis\\source\\repos\\WeatherShape\\Shape.Weather.Common\\Shape.Weather.Common.csproj"
+              "C:\\Users\\mrkis\\source\\repos\\net\\Shape.Weather.Common\\Shape.Weather.Common.csproj": {
+                "projectPath": "C:\\Users\\mrkis\\source\\repos\\net\\Shape.Weather.Common\\Shape.Weather.Common.csproj"
               }
             }
           }
@@ -161,6 +145,10 @@
               "version": "[5.1.1, )"
             },
             "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[6.3.0, )"
+            },
+            "Swashbuckle.AspNetCore.Newtonsoft": {
               "target": "Package",
               "version": "[6.3.0, )"
             }
