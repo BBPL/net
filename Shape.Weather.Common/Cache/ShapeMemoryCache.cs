@@ -12,7 +12,7 @@ using WeatherShape.Configuration.Models.CacheConfiguration;
 
 namespace Shape.Weather.Common.Cache
 {
-    internal class ShapeMemoryCache : MemoryCache, IShapeMemoryCache
+    public class ShapeMemoryCache : MemoryCache, IShapeMemoryCache
     {
         private readonly ConcurrentDictionary<object, DateTime> _entriesTimes;
 

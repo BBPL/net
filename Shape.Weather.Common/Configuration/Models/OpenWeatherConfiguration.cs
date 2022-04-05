@@ -6,12 +6,16 @@ namespace WeatherShape.Configuration.Models
     {
         public OpenWeatherConfiguration()
         {
-            Uri = "";
+            LocationUri = "";
+            ForecastUri = "";
             ApiKey = "";
         }
 
         [Required]
-        public string Uri { get; set; }
+        public string LocationUri { get; set; }
+
+        [Required]
+        public string ForecastUri { get; set; }
 
         [Required]
         public string ApiKey { get; set; }
