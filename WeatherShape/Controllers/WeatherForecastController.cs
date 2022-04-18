@@ -11,7 +11,7 @@ namespace WeatherShape.Controllers
 {
     [Produces("application/json")]
     [ApiController]
-    [Route("weather/[action]")]
+    [Route("weather")]
     public class WeatherForecastController : ControllerBase
     {
         private readonly Serilog.ILogger _logger;
@@ -41,6 +41,7 @@ namespace WeatherShape.Controllers
         [SeparatedQueryString]
         public async Task<ActionResult> GetSummary([FromQuery]FavoriteLocationsRequest request)
         {
+            _logger.Information("Requesting summary for location with weather above {Temperature} with unit {Unit}", request.Temperature, request.Unit);
             var result = new List<LocationResponse>();
             var date = DateTime.UtcNow.Date;
             _ = Enum.TryParse<TempUnitEnum>(request.Unit, out TempUnitEnum unitMapped);
@@ -79,6 +80,7 @@ namespace WeatherShape.Controllers
         [Route("locations/{cityId:int}")]
         public async Task<ActionResult> GetLocationInformation([FromRoute] int cityId)
         {
+            _logger.Information("Requesting weather for next days for city {CityId}", cityId);
             var date = DateTime.UtcNow.Date;
             
             ForecastResponse? weatherForecast = await _cache.GetOrCreateAsync(

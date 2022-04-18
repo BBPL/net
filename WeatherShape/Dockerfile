@@ -8,6 +8,7 @@ EXPOSE 443
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
 COPY ["WeatherShape/WeatherShape.csproj", "WeatherShape/"]
+COPY ["Shape.Weather.Common/Shape.Weather.Common.csproj", "Shape.Weather.Common/"]
 RUN dotnet restore "WeatherShape/WeatherShape.csproj"
 COPY . .
 WORKDIR "/src/WeatherShape"
