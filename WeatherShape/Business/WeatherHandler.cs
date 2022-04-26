@@ -34,10 +34,14 @@ namespace WeatherShape.Business
         /// <param name="cityId"></param>
         /// <returns></returns>
         /// <exception cref="NotImplementedException"></exception>
-        public async Task<LocationResponse> GetLocation(ICacheEntry cacheEntry, TempUnitEnum unitMapped, int cityId)
+        public async Task<LocationResponse?> GetLocation(ICacheEntry cacheEntry, TempUnitEnum unitMapped, int cityId)
         {
             _logger.Information("Requesting location information using Http Client for cityId {CityId}", cityId);
             var openWeatherResponse = await _httpClient.GetLocation(cityId);
+            if (openWeatherResponse == null)
+            {
+                return null;
+            }
 
             _logger.Information("Converting weather temperature");
             double temperatureK = openWeatherResponse.WeatherData.temp;
@@ -56,7 +60,7 @@ namespace WeatherShape.Business
                 WeatherData = new WeatherDataResponse
                 {
                     Temperature = temperature,
-                    TempUnit = unitMapped
+                    TempUnit = unitMapped.ToString()
                 }
             };
 
@@ -70,10 +74,14 @@ namespace WeatherShape.Business
         /// <param name="cacheEntry"></param>
         /// <param name="cityId"></param>
         /// <returns></returns>
-        public async Task<ForecastResponse> GetForecast(ICacheEntry cacheEntry, int cityId)
+        public async Task<ForecastResponse?> GetForecast(ICacheEntry cacheEntry, int cityId)
         {
             _logger.Information("Requesting foreacst information using Http Client for cityId {CityId}", cityId);
             var forecastResponse = await _httpClient.GetForecast(cityId);
+            if (forecastResponse == null)
+            {
+                return null;
+            }
 
             _logger.Information("Mapping weather information for each time interval");
             var weatherDataResponses = new List<WeatherForecastDataResponse>();

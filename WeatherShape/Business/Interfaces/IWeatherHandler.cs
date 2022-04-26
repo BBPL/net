@@ -6,8 +6,8 @@ namespace WeatherShape.Business.Interfaces
 {
     public interface IWeatherHandler
     {
-        Task<LocationResponse> GetLocation(ICacheEntry cacheEntry, TempUnitEnum unitMapped, int cityId);
-        Task<ForecastResponse> GetForecast(ICacheEntry cacheEntry, int cityId);
+        Task<LocationResponse?> GetLocation(ICacheEntry cacheEntry, TempUnitEnum unitMapped, int cityId);
+        Task<ForecastResponse?> GetForecast(ICacheEntry cacheEntry, int cityId);
 
     }
 }

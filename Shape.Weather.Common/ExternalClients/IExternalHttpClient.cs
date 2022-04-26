@@ -10,13 +10,13 @@ namespace Shape.Weather.ExternalClients
         /// </summary>
         /// <param name="cityId"></param>
         /// <returns></returns>
-        Task<OpenWeatherForecastResponse> GetForecast(int cityId);
+        Task<OpenWeatherForecastResponse?> GetForecast(int cityId);
 
         /// <summary>
         /// Request current weather for a given city
         /// </summary>
         /// <param name="cityId"></param>
         /// <returns></returns>
-        Task<OpenWeatherLocatonResponse> GetLocation(int cityId);
+        Task<OpenWeatherLocatonResponse?> GetLocation(int cityId);
     }
 }

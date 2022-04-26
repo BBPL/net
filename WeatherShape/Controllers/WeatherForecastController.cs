@@ -4,6 +4,7 @@ using Shape.Weather.Common.Cache.Enums;
 using Shape.Weather.Common.Cache.Interfaces;
 using Shape.Weather.Common.Models.Response;
 using Shape.Weather.Models.Enums;
+using System.Security.Authentication;
 using WeatherShape.Business.Interfaces;
 using WeatherShape.Models.Requsts;
 
@@ -45,22 +46,34 @@ namespace WeatherShape.Controllers
             var result = new List<LocationResponse>();
             var date = DateTime.UtcNow.Date;
             _ = Enum.TryParse<TempUnitEnum>(request.Unit, out TempUnitEnum unitMapped);
-
-            foreach (var cityId in request.Locations)
+            try
             {
-                LocationResponse? location = await _cache.GetOrCreateAsync(
-                        InternEntryKeys.GetCityWeather(cityId),
-                        CacheExpirationEnum.SlowExpiration,
-                        async taskCache => await _weatherHandler.GetLocation(taskCache, unitMapped, cityId));
+                foreach (var cityId in request.Locations)
+                {
+                    LocationResponse? location = await _cache.GetOrCreateAsync(
+                            InternEntryKeys.GetCityWeather(cityId),
+                            CacheExpirationEnum.SlowExpiration,
+                            async taskCache => await _weatherHandler.GetLocation(taskCache, unitMapped, cityId));
 
-                if (location == null)
-                {
-                    continue;
+                    if (location == null)
+                    {
+                        continue;
+                    }
+                    else
+                    {
+                        result.Add(location);
+                    }
                 }
-                else
-                {
-                    result.Add(location);
-                }
+
+            }
+            catch (AuthenticationException ex)
+            {
+                return Unauthorized();
+            }
+            catch (Exception ex)
+            {
+                _logger.Error(ex, "Failed to read location inforamtion for cities {cities}", string.Join(", ", request.Locations));
+                return Problem();
             }
 
             result = result.Where(x => x.WeatherData.Temperature > request.Temperature).ToList();
@@ -78,16 +91,33 @@ namespace WeatherShape.Controllers
         /// <returns></returns>
         [HttpGet]
         [Route("locations/{cityId:int}")]
-        public async Task<ActionResult> GetLocationInformation([FromRoute] int cityId)
+        public async Task<ActionResult> GetForecast([FromRoute] int cityId)
         {
             _logger.Information("Requesting weather for next days for city {CityId}", cityId);
             var date = DateTime.UtcNow.Date;
-            
-            ForecastResponse? weatherForecast = await _cache.GetOrCreateAsync(
-                InternEntryKeys.GetCityWeatherByDate(cityId, date),
-                CacheExpirationEnum.SlowExpiration,
-                async cacheEntry => await _weatherHandler.GetForecast(cacheEntry, cityId));
+            ForecastResponse? weatherForecast;
 
+            try
+            {
+                weatherForecast = await _cache.GetOrCreateAsync(
+                    InternEntryKeys.GetCityWeatherByDate(cityId, date),
+                    CacheExpirationEnum.SlowExpiration,
+                    async cacheEntry => await _weatherHandler.GetForecast(cacheEntry, cityId));
+            }
+            catch (AuthenticationException ex)
+            {
+                return Unauthorized();
+            }
+            catch (Exception ex)
+            {
+                _logger.Error(ex, "Failed to read forecast for city {cityId}", cityId);
+                return Problem();
+            }
+
+            if (weatherForecast == null)
+            {
+                return NoContent();
+            }
             return Ok(weatherForecast);
         }
 

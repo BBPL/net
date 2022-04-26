@@ -14,7 +14,7 @@
         /// <returns></returns>
         public static double FromKelvinToCelsius(double kelvinTemp)
         {
-            return (kelvinTemp - KelvinZero);
+            return Math.Round((kelvinTemp - KelvinZero), 2);
         }
 
         /// <summary>
@@ -24,7 +24,7 @@
         /// <returns></returns>
         public static double FromKelvinToFahrenheit(double kelvinTemp)
         {
-            return (1.8 * (kelvinTemp - 273) + 32);
+            return Math.Round((1.8 * (kelvinTemp - 273) + 32), 2);
         }
     }
 }
